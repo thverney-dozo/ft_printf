@@ -6,24 +6,26 @@
 #    By: thverney <thverney@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/14 03:05:05 by thverney          #+#    #+#              #
-#    Updated: 2019/11/21 13:21:13 by thverney         ###   ########.fr        #
+#    Updated: 2021/02/02 15:13:47 by thverney         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+CFLAGS = -Wall -Werror -Wextra
 
 NAME = libftprintf.a
 
 INCLUDE = ft_printf.h
 
-FILES = 		ft_printf.c \
-				do_c.c \
-				do_x.c \
-				do_s.c \
-				do_d_i.c \
-				do_p.c \
-				do_mod.c \
-				do_u.c \
-				utils.c \
-				utils_2.c \
+FILES = 		srcs/ft_printf.c \
+				srcs/do_c.c \
+				srcs/do_x.c \
+				srcs/do_s.c \
+				srcs/do_d_i.c \
+				srcs/do_p.c \
+				srcs/do_mod.c \
+				srcs/do_u.c \
+				srcs/utils.c \
+				srcs/utils_2.c \
 				libft/ft_atoi.c \
                 libft/ft_bzero.c \
                 libft/ft_isalnum.c \
@@ -66,12 +68,14 @@ FILES = 		ft_printf.c \
 
 OBJECTS = $(FILES:.c=.o)
 
-CC= gcc -Wall -Wextra -Werror
+%.o : %.c
+	@/bin/echo -n [+]
+	@gcc $(CFLAGS) -c ${HEADERS} $< -o $@
 
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-						ar rc $(NAME) $(OBJECTS)
+						@ar rc $(NAME) $(OBJECTS)
 
 clean : 
 			/bin/rm -f *.o */*.o
