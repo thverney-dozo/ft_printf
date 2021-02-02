@@ -2,7 +2,9 @@
 
 Recode printf() function in C language
 
-## handling :
+## With % [ indicators] [ width ] [. precision] [ lenght ] type
+
+## Handling :
 
 ### %s
 
